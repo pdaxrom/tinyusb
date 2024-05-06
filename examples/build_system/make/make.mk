@@ -116,6 +116,13 @@ ifeq (${MAX3421_HOST},1)
   CMAKE_DEFSYM +=	-DMAX3421_HOST=1
 endif
 
+# use n64cart  as host controller
+ifeq (${N64CART_HOST},1)
+#  SRC_C += src/portable/analog/max3421/hcd_max3421.c
+  CFLAGS += -DCFG_TUH_N64CART=1
+  CMAKE_DEFSYM +=	-N64CART_HOST=1
+endif
+
 # Log level is mapped to TUSB DEBUG option
 ifneq ($(LOG),)
   CMAKE_DEFSYM +=	-DLOG=$(LOG)
